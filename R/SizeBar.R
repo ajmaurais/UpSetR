@@ -32,8 +32,7 @@ log2_reverse_trans <- function(){
 }
 globalVariables(c("y"))
 ## Generate set size plot
-Make_size_plot <- function(Set_size_data, sbar_color, ratios, ylabel, scale_sets, text_scale, set_size_angle, set_size.show, set_size.scale_max,
-                           set_size.number_size){
+Make_size_plot <- function(Set_size_data, sbar_color, ratios, ylabel, scale_sets, text_scale, set_size_angle, set_size.show, set_size.scale_max, set_size.number_size, sets.x.labels){
 #   if(ratios[1] < 0.4){
 #     m <- (-0.05)
 #   }
@@ -97,25 +96,31 @@ Make_size_plot <- function(Set_size_data, sbar_color, ratios, ylabel, scale_sets
   if(scale_sets == "log10"){
     if(!is.null(set_size.scale_max)) {
       Size_plot <- (Size_plot + scale_y_continuous(limits = c(set_size.scale_max, 0), 
-                                                   trans = log10_reverse_trans()))
+                                                   trans = log10_reverse_trans(),
+												   labels = sets.x.labels))
     } else {
-      Size_plot <- (Size_plot + scale_y_continuous(trans = log10_reverse_trans()))
+      Size_plot <- (Size_plot + scale_y_continuous(trans = log10_reverse_trans(),
+												   labels = sets.x.labels))
     }
   }
   else if (scale_sets == "log2"){
     if(!is.null(set_size.scale_max)) {
       Size_plot <- (Size_plot + scale_y_continuous(limits = c(set_size.scale_max, 0), 
-                                                   trans = log2_reverse_trans()))
+                                                   trans = log2_reverse_trans(),
+												   labels = sets.x.labels))
     } else {
-      Size_plot <- (Size_plot + scale_y_continuous(trans = log2_reverse_trans()))
+      Size_plot <- (Size_plot + scale_y_continuous(trans = log2_reverse_trans(),
+												   labels = sets.x.labels))
     }
   }
   else{
     if(!is.null(set_size.scale_max)) {
       Size_plot <- (Size_plot + scale_y_continuous(limits = c(set_size.scale_max, 0),
-                                                   trans = "reverse"))
+                                                   trans = "reverse",
+												   labels = sets.x.labels))
     } else {
-      Size_plot <- (Size_plot + scale_y_continuous(trans = "reverse"))
+      Size_plot <- (Size_plot + scale_y_continuous(trans = "reverse",
+												   labels = sets.x.labels))
     }
   }
   

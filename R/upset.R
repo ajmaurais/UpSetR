@@ -19,6 +19,7 @@
 #' @param mainbar.y.max The maximum y value of the intersection size bar plot scale. May be useful when aligning multiple UpSet plots horizontally.
 #' @param sets.bar.color Color of set size bar plot
 #' @param sets.x.label The x-axis label of the set size bar plot
+#' @param sets.x.labels The labeles for the x axis of the set size bar plot
 #' @param point.size Size of points in matrix plot
 #' @param line.size Width of lines in matrix plot
 #' @param mb.ratio Ratio between matrix plot and main bar plot (Keep in terms of hundredths)
@@ -119,7 +120,7 @@
 #' @export
 upset <- function(data, nsets = 5, nintersects = 40, sets = NULL, keep.order = F, set.metadata = NULL, intersections = NULL,
                   matrix.color = "gray23", main.bar.color = "gray23", mainbar.y.label = "Intersection Size", mainbar.y.max = NULL,
-                  sets.bar.color = "gray23", plot.title = NA, sets.x.label = "Set Size", point.size = 2.2, line.size = 0.7,
+                  sets.bar.color = "gray23", plot.title = NA, sets.x.label = "Set Size", sets.x.labels = waiver(), point.size = 2.2, line.size = 0.7,
                   mb.ratio = c(0.70,0.30), expression = NULL, att.pos = NULL, att.color = main.bar.color, order.by = c("freq", "degree"),
                   decreasing = c(T, F), show.numbers = "yes", number.angles = 0, number.colors=NULL, group.by = "degree",cutoff = NULL,
                   queries = NULL, query.legend = "none", shade.color = "gray88", shade.alpha = 0.25, matrix.dot.alpha =0.5,
@@ -262,7 +263,7 @@ upset <- function(data, nsets = 5, nintersects = 40, sets = NULL, keep.order = F
   Matrix <- Make_matrix_plot(Matrix_layout, Set_sizes, All_Freqs, point.size, line.size,
                              text.scale, labels, ShadingData, shade.alpha)
   Sizes <- Make_size_plot(Set_sizes, sets.bar.color, mb.ratio, sets.x.label, scale.sets, text.scale, set_size.angles,set_size.show,
-                          set_size.scale_max, set_size.numbers_size)
+                          set_size.scale_max, set_size.numbers_size, sets.x.labels)
   
   # Make_base_plot(Main_bar, Matrix, Sizes, labels, mb.ratio, att.x, att.y, New_data,
   #                expression, att.pos, first.col, att.color, AllQueryData, attribute.plots,
